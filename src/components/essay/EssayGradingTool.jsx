@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, List, Input, Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchEssayGrade } from "../../redux/api/api";
-import { selectEssayGrade } from "../../redux/features/essaySlice";
+// import { fetchEssayGrade } from "../../redux/api/api";
+import { addEssay, selectEssayGrade } from "../../redux/features/essaySlice";
 
 
 const { Option } = Select;
@@ -16,7 +16,7 @@ const EssayGradingTool = () => {
   const dispatch = useDispatch();
   const essayGrade = useSelector(selectEssayGrade);
 
-  console.log(essayGrade);
+//   console.log(essayGrade);
 
   const handleGradeEssay = () => {
     const essayData = {
@@ -25,7 +25,7 @@ const EssayGradingTool = () => {
       lexicalResource,
       grammaticalRangeAccuracy,
     };
-    dispatch(fetchEssayGrade(essayData));
+    dispatch(addEssay(essayData));
   };
 
   return (
