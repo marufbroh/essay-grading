@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { Button, List, Input, Select } from "antd";
+import { Button, Input, Table } from "antd";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchEssayGrade } from "../../redux/api/api";
 import { addEssay, selectEssayGrade } from "../../redux/features/essaySlice";
 
-
-const { Option } = Select;
+// const { Option } = Select;
 
 const EssayGradingTool = () => {
   const [taskResponse, setTaskResponse] = useState("");
@@ -16,7 +15,7 @@ const EssayGradingTool = () => {
   const dispatch = useDispatch();
   const essayGrade = useSelector(selectEssayGrade);
 
-//   console.log(essayGrade);
+  //   console.log(essayGrade);
 
   const handleGradeEssay = () => {
     const essayData = {
@@ -27,6 +26,31 @@ const EssayGradingTool = () => {
     };
     dispatch(addEssay(essayData));
   };
+
+  // Table coloum
+
+  const columns = [
+    {
+      title: "Task Response",
+      dataIndex: "taskResponse",
+      key: "taskResponse",
+    },
+    {
+      title: "Coherence Cohesion",
+      dataIndex: "coherenceCohesion",
+      key: "coherenceCohesion",
+    },
+    {
+      title: "LexicalResource",
+      dataIndex: "lexicalResource",
+      key: "lexicalResource",
+    },
+    {
+      title: "Grammatical RangeAccuracy",
+      dataIndex: "grammaticalRangeAccuracy",
+      key: "grammaticalRangeAccuracy",
+    },
+  ];
 
   return (
     <div>
@@ -60,14 +84,15 @@ const EssayGradingTool = () => {
       {essayGrade && (
         <div>
           <h2>Essay Grade</h2>
-          <List
+          {/* <List
             dataSource={essayGrade}
             renderItem={(item) => (
               <List.Item>
                 {item.criteria}: {item.grade}
               </List.Item>
             )}
-          />
+          /> */}
+          <Table columns={columns} dataSource={essayGrade} />
         </div>
       )}
     </div>
