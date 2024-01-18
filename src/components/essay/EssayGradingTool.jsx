@@ -41,7 +41,7 @@ const EssayGradingTool = () => {
       key: "coherenceCohesion",
     },
     {
-      title: "LexicalResource",
+      title: "Lexical Resource",
       dataIndex: "lexicalResource",
       key: "lexicalResource",
     },
