@@ -1,10 +1,7 @@
 import { Button, Input, Table } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchEssayGrade } from "../../redux/api/api";
 import { addEssay, selectEssayGrade } from "../../redux/features/essaySlice";
-
-// const { Option } = Select;
 
 const EssayGradingTool = () => {
   const [taskResponse, setTaskResponse] = useState("");
@@ -14,8 +11,6 @@ const EssayGradingTool = () => {
 
   const dispatch = useDispatch();
   const essayGrade = useSelector(selectEssayGrade);
-
-  //   console.log(essayGrade);
 
   const handleGradeEssay = () => {
     const essayData = {
@@ -27,7 +22,7 @@ const EssayGradingTool = () => {
     dispatch(addEssay(essayData));
   };
 
-  // Table coloum
+  // Table colum
 
   const columns = [
     {
@@ -84,14 +79,6 @@ const EssayGradingTool = () => {
       {essayGrade && (
         <div>
           <h2>Essay Grade</h2>
-          {/* <List
-            dataSource={essayGrade}
-            renderItem={(item) => (
-              <List.Item>
-                {item.criteria}: {item.grade}
-              </List.Item>
-            )}
-          /> */}
           <Table columns={columns} dataSource={essayGrade} />
         </div>
       )}
